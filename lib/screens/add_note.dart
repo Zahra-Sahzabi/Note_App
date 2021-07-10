@@ -14,7 +14,16 @@ class NotePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xffe4e3f6),
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                controller.addNoteToDatabase();
+              },
+              icon: Icon(Icons.check))
+        ],
         title: Text(noteMode == NoteMode.adding ? 'Add Note' : 'Edit Note'),
+        leading: IconButton(
+            onPressed: () => Get.back(), icon: Icon(Icons.arrow_back_ios)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -32,6 +41,7 @@ class NotePage extends StatelessWidget {
             ),
             TextField(
               controller: controller.contentController,
+              style: TextStyle(fontSize: 20),
               decoration:
                   InputDecoration(hintText: 'Note', border: InputBorder.none),
               maxLines: null,
@@ -39,9 +49,14 @@ class NotePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {controller.addNoteToDatabase();},
-        child: Icon(Icons.check),
+      floatingActionButton: Tooltip(
+        message: 'Save',
+        child: FloatingActionButton(
+          onPressed: () {
+            controller.addNoteToDatabase();
+          },
+          child: Icon(Icons.check),
+        ),
       ),
     );
   }

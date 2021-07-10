@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:note_app/db/database.dart';
+import 'package:note_app/db/Database.dart';
 import 'package:note_app/models/note.dart';
 import 'package:string_stats/string_stats.dart';
 
@@ -41,10 +41,8 @@ class NoteController extends GetxController {
     Note note = Note(
       title: title,
       content: content,
-      dateTimeEdited:
-          DateFormat("MMM dd, yyyy  HH:mm:ss").format(DateTime.now()),
-      dateTimeCreated:
-          DateFormat("MMM dd, yyyy HH:mm:ss").format(DateTime.now()),
+      dateTimeEdited: DateFormat.yMMMMd().format(DateTime.now()),
+      dateTimeCreated: DateFormat.yMMMMd().format(DateTime.now()),
     );
     await DatabaseHelper.instance.addNote(note);
     contentWordCount = wordCount(content);
@@ -73,8 +71,7 @@ class NoteController extends GetxController {
       id: id,
       title: title,
       content: content,
-      dateTimeEdited:
-          DateFormat("MMM dd, yyyy HH:mm:ss").format(DateTime.now()),
+      dateTimeEdited: DateFormat.yMMMMd().format(DateTime.now()),
       dateTimeCreated: dTCreated,
     );
     await DatabaseHelper.instance.updateNote(note);
