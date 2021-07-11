@@ -14,6 +14,14 @@ class NoteDetail extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xffe4e3f6),
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                controller.updateNote(controller.notes[index].id!,
+                    controller.notes[index].dateTimeCreated!);
+              },
+              icon: Icon(Icons.check))
+        ],
         title: Text('Notes'),
         leading: IconButton(
             onPressed: () {
@@ -24,14 +32,18 @@ class NoteDetail extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.all(20),
           child: Column(
             children: [
               TextField(
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
                 controller: controller.titleController,
               ),
               TextField(
+                style: TextStyle(fontSize: 20),
                 controller: controller.contentController,
+                decoration: InputDecoration(border: InputBorder.none),
               )
             ],
           ),

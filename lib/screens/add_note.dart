@@ -30,6 +30,7 @@ class NotePage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              
               controller: controller.titleController,
               textAlign: TextAlign.center,
               maxLines: 1,

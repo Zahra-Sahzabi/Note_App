@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_app/controller/note_contoller.dart';
+import 'package:note_app/models/popupText.dart';
+import 'package:note_app/widgets/search.dart';
 
 class PopupMenue extends StatelessWidget {
   const PopupMenue({
@@ -12,47 +14,56 @@ class PopupMenue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton(
-      color: Colors.black,
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: 0,
-          child: Text(
-            "Delete All Notes",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return PopupMenuButton<String>(
+      itemBuilder: (context) => PopupText.items
+          .map(
+            (item) => PopupMenuItem(
+              child: Text(item),
+              value: item,
             ),
-          ),
-          
-        )
-      ],
-      onSelected: (val) {
-        if (val == 0) {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('DeleteNotes'),
-                  content:
-                      Text('Are you sure you want to delete All notes?'),
-                  actions: <Widget>[
-                    Row(
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              controller.deleteAllNote();
-                            },
-                            child: Text('Yes')),
-                        TextButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: Text('No')),
-                      ],
-                    )
-                  ],
-                );
-              });
+          )
+          .toList(),
+      onSelected: (value) {
+        switch (value) {
+          case PopupText.search:
+            showSearch(context: context, delegate: SearchBar());
+            break;
+
+          case PopupText.deleteNotes:
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(
+                      'Delete Notes',
+                      textAlign: TextAlign.center,
+                    ),
+                    content: Text(
+                      'Are you sure you want to delete All notes?',
+                      textAlign: TextAlign.center,
+                    ),
+                    actions: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                controller.deleteAllNote();
+                                Get.back();
+                              },
+                              child:
+                                  Text('Yes', style: TextStyle(fontSize: 18))),
+                          TextButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              child:
+                                  Text('No', style: TextStyle(fontSize: 18))),
+                        ],
+                      )
+                    ],
+                  );
+                });
         }
       },
     );
