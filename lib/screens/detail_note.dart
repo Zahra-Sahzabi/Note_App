@@ -62,8 +62,8 @@ class NoteDetail extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.check),
         onPressed: () {
-          controller.updateNote(controller.notes[index].id!,
-              controller.notes[index].dateTimeCreated!);
+          controller.updateNote(controller.reversedNote[index].id!,
+              controller.reversedNote[index].dateTimeCreated!);
         },
       ),
     );
