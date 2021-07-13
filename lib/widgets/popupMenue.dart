@@ -14,22 +14,26 @@ class PopupMenue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<String>(
-      itemBuilder: (context) => PopupText.items
+    return PopupMenuButton<IconMenue>(
+      itemBuilder: (context) => IconsMenue.items
           .map(
-            (item) => PopupMenuItem(
-              child: Text(item),
+            (item) => PopupMenuItem<IconMenue>(
+              child: ListTile(
+                title: Text(item.text),
+                leading: Icon(item.icon),
+                contentPadding: EdgeInsets.zero,
+              ),
               value: item,
             ),
           )
           .toList(),
       onSelected: (value) {
         switch (value) {
-          case PopupText.search:
+          case IconsMenue.search:
             showSearch(context: context, delegate: SearchBar());
             break;
 
-          case PopupText.deleteNotes:
+          case IconsMenue.delete:
             showDialog(
                 context: context,
                 builder: (context) {

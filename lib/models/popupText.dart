@@ -1,6 +1,20 @@
-class PopupText {
-  static const items = <String>[search, deleteNotes];
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-  static const String search = "Search";
-  static const String deleteNotes = "Delete All Notes";
+class IconMenue {
+  final String text;
+  final IconData icon;
+  const IconMenue({
+    required this.text,
+    required this.icon,
+  });
+}
+
+class IconsMenue {
+  static const items = <IconMenue>[
+    search,
+    delete,
+  ];
+  static const search = IconMenue(icon: Icons.search, text: 'search');
+  static const delete = IconMenue(icon: Icons.delete, text: 'Delete Notes');
 }
