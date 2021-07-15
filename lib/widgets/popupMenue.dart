@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_app/controller/note_contoller.dart';
@@ -20,7 +22,7 @@ class PopupMenue extends StatelessWidget {
             (item) => PopupMenuItem<IconMenue>(
               child: ListTile(
                 title: Text(item.text),
-                leading: Icon(item.icon),
+                leading: Icon(item.icon, color: Color(0xFF849ae3)),
                 contentPadding: EdgeInsets.zero,
               ),
               value: item,
@@ -45,6 +47,7 @@ class PopupMenue extends StatelessWidget {
                     content: Text(
                       'Are you sure you want to delete All notes?',
                       textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                     actions: <Widget>[
                       Row(

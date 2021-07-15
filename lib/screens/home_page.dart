@@ -34,14 +34,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffe4e3f6),
+      backgroundColor: Color(0xffe4e3f1),
       appBar: AppBar(
-        actions: [
-          PopupMenue(controller: controller)
-        ],
+        iconTheme: Theme.of(context).iconTheme,
+        backgroundColor: Color(0xffe4e3f1),
+        elevation: 0,
+        actions: [PopupMenue(controller: controller)],
         title: Text(
           'Notes',
-          style: TextStyle(fontSize: 26),
+          style: Theme.of(context).textTheme.headline1,
         ),
       ),
       body: GetBuilder<NoteController>(
@@ -49,7 +50,9 @@ class HomePage extends StatelessWidget {
       floatingActionButton: Tooltip(
         message: 'New Note',
         child: FloatingActionButton(
-          child: Icon(Icons.edit),
+          child: Icon(
+            Icons.edit,
+          ),
           onPressed: () => Get.to(NotePage(NoteMode.adding)),
         ),
       ),

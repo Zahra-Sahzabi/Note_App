@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_app/controller/note_contoller.dart';
 import 'package:note_app/screens/detail_note.dart';
+import 'package:note_app/screens/home_page.dart';
 
 class ListVieww extends StatelessWidget {
   const ListVieww({
@@ -15,7 +16,7 @@ class ListVieww extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemBuilder: (context, index) {
-           deleteDialog() {
+          deleteDialog() {
             return AlertDialog(
                 title: Text(
                   'Delete Note',
@@ -36,8 +37,9 @@ class ListVieww extends StatelessWidget {
                           child: Text('No', style: TextStyle(fontSize: 18))),
                       TextButton(
                           onPressed: () {
-                            controller.deleteNote(controller.reversedNote[index].id!);
-                            Get.back();
+                            controller
+                                .deleteNote(controller.reversedNote[index].id!);
+                            Get.offAll(HomePage());
                           },
                           child: Text(
                             'Yes',
@@ -57,27 +59,28 @@ class ListVieww extends StatelessWidget {
                   return deleteDialog();
                 }),
             child: Padding(
-              padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
+              padding: const EdgeInsets.only(right: 13, left: 13, top: 8),
               child: Card(
-                  child: ListTile(
-                title: Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Text(
-                    //main notes order
-                    controller.reversedNote[index].title!,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color(0xff090952)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(28.0)),
                   ),
-                ),
-                subtitle: Text(controller.reversedNote[index].content!,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 18,
-                    )),
-                trailing: Text(controller.reversedNote[index].dateTimeCreated!),
-              )),
+                  color: Color(0xFF849ae3),
+                  margin: EdgeInsets.zero,
+                  child: ListTile(
+                    title: Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Text(
+                        //main notes order
+                        controller.reversedNote[index].title!,
+                        style:  Theme.of(context).textTheme.bodyText1,
+                      ),
+                    ),
+                    subtitle: Text(controller.reversedNote[index].content!,
+                        overflow: TextOverflow.ellipsis,
+                        style:  Theme.of(context).textTheme.bodyText2,),
+                    trailing:
+                        Text(controller.reversedNote[index].dateTimeCreated!,style: Theme.of(context).textTheme.subtitle1),
+                  )),
             ),
           );
         },

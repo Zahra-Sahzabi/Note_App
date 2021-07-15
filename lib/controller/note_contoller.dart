@@ -9,7 +9,7 @@ class NoteController extends GetxController {
   final titleController = TextEditingController();
   final contentController = TextEditingController();
   var notes = <Note>[];
-  List get reversedNote {
+  List<Note> get reversedNote {
     return notes.reversed.toList();
   }
   int contentWordCount = 0;

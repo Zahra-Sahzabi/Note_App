@@ -7,8 +7,7 @@ class NoteDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final int index = ModalRoute.of(context)!.settings.argumentsas int;
-    // final Function deleteDialog = ModalRoute.of(context)!.settings.arguments as Function;
+    // final int index = ModalRoute.of(context)!.settings.arguments as int;
     var data = Get.arguments;
     var index = data["key1"];
     var delete = data["key2"];
@@ -26,17 +25,22 @@ class NoteDetail extends StatelessWidget {
                     controller.reversedNote[index].dateTimeCreated!);
               },
               icon: Icon(Icons.check)),
-          IconButton(onPressed:()=> showDialog(
-                context: context,
-                builder: (context) {
-                  return delete;
-                }), icon: Icon(Icons.delete_rounded))
+          IconButton(
+              onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return delete;
+                  }),
+              icon: Icon(Icons.delete_rounded))
         ],
-        title: Text('Notes'),
+        title: Text(
+          'Notes',
+          style: Theme.of(context).textTheme.headline6,
+        ),
         leading: IconButton(
             onPressed: () {
-              controller.updateNote(controller.notes[index].id!,
-                  controller.notes[index].dateTimeCreated!);
+              controller.updateNote(controller.reversedNote[index].id!,
+                  controller.reversedNote[index].dateTimeCreated!);
             },
             icon: Icon(Icons.arrow_back_ios)),
       ),
@@ -46,12 +50,12 @@ class NoteDetail extends StatelessWidget {
           child: Column(
             children: [
               TextField(
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline2,
                 textAlign: TextAlign.center,
                 controller: controller.titleController,
               ),
               TextField(
-                  style: TextStyle(fontSize: 20),
+                  style: Theme.of(context).textTheme.headline3,
                   controller: controller.contentController,
                   decoration: InputDecoration(border: InputBorder.none),
                   maxLines: null)

@@ -21,7 +21,10 @@ class NotePage extends StatelessWidget {
               },
               icon: Icon(Icons.check))
         ],
-        title: Text(noteMode == NoteMode.adding ? 'Add Note' : 'Edit Note'),
+        title: Text(
+          noteMode == NoteMode.adding ? 'Add Note' : 'Edit Note',
+          style: Theme.of(context).textTheme.headline6,
+        ),
         leading: IconButton(
             onPressed: () => Get.back(), icon: Icon(Icons.arrow_back_ios)),
       ),
@@ -34,7 +37,7 @@ class NotePage extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 1,
               decoration: InputDecoration(hintText: 'Title'),
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headline2
             ),
             SizedBox(
               height: 20,

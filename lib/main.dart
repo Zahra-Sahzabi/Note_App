@@ -26,7 +26,39 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        iconTheme: IconThemeData(color: Color(0xff090952)),
         primarySwatch: colorCustom,
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            fontSize: 26,
+            color: Color(0xff090952),
+            fontWeight: FontWeight.w600,
+            fontFamily: 'OpenSans'
+          ),
+          headline6: TextStyle(
+              fontSize: 21,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'OpenSans'),
+          bodyText1: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Colors.white,
+              fontFamily: 'OpenSans'),
+          headline2: TextStyle(
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Color(0xff090952)),
+          headline3: TextStyle(
+              fontSize: 20, color: Color(0xff090952), fontFamily: 'OpenSans'),
+          bodyText2: TextStyle(
+              color: Colors.white, fontSize: 18, fontFamily: 'OpenSans'),
+          subtitle1: TextStyle(
+              color: Colors.white70, fontSize: 13, fontFamily: 'OpenSans'),
+          headline4: TextStyle(
+              fontSize: 20, color: Colors.black, fontFamily: 'OpenSans'),
+        ),
       ),
       home: HomePage(),
     );
