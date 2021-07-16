@@ -35,18 +35,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffe4e3f1),
-      appBar: AppBar(
-        iconTheme: Theme.of(context).iconTheme,
-        backgroundColor: Color(0xffe4e3f1),
-        elevation: 0,
-        actions: [PopupMenue(controller: controller)],
-        title: Text(
-          'Notes',
-          style: Theme.of(context).textTheme.headline1,
+      appBar:  AppBar(
+          iconTheme: Theme.of(context).iconTheme,
+          backgroundColor: Color(0xffe4e3f1),
+          elevation: 0,
+          actions: [PopupMenue(controller: controller)],
+          title: Text(
+            'Notes',
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ),
+      
+      body: DefaultTextStyle(
+        style: TextStyle(color: Colors.blue),
+        child: GetBuilder<NoteController>(
+            builder: (_) => controller.isEmpty() ? emptyNotes() : viewNotes()),
       ),
-      body: GetBuilder<NoteController>(
-          builder: (_) => controller.isEmpty() ? emptyNotes() : viewNotes()),
       floatingActionButton: Tooltip(
         message: 'New Note',
         child: FloatingActionButton(

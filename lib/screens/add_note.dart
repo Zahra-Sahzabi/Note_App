@@ -44,7 +44,7 @@ class NotePage extends StatelessWidget {
             ),
             TextField(
               controller: controller.contentController,
-              style: TextStyle(fontSize: 20),
+               style: Theme.of(context).textTheme.headline3,
               decoration:
                   InputDecoration(hintText: 'Note', border: InputBorder.none),
               maxLines: null,

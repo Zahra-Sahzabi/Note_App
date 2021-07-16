@@ -18,13 +18,18 @@ class ListVieww extends StatelessWidget {
         itemBuilder: (context, index) {
           deleteDialog() {
             return AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                backgroundColor: Colors.white,
                 title: Text(
                   'Delete Note',
                   textAlign: TextAlign.center,
+                  style: TextStyle(color: Color(0xFF849ae3)),
                 ),
                 content: Text(
                   "Are you sure you want to delete the note?",
                   textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 actions: <Widget>[
                   Row(
@@ -72,14 +77,17 @@ class ListVieww extends StatelessWidget {
                       child: Text(
                         //main notes order
                         controller.reversedNote[index].title!,
-                        style:  Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
-                    subtitle: Text(controller.reversedNote[index].content!,
-                        overflow: TextOverflow.ellipsis,
-                        style:  Theme.of(context).textTheme.bodyText2,),
-                    trailing:
-                        Text(controller.reversedNote[index].dateTimeCreated!,style: Theme.of(context).textTheme.subtitle1),
+                    subtitle: Text(
+                      controller.reversedNote[index].content!,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    trailing: Text(
+                        controller.reversedNote[index].dateTimeCreated!,
+                        style: Theme.of(context).textTheme.subtitle1),
                   )),
             ),
           );

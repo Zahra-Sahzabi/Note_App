@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:note_app/controller/note_contoller.dart';
+import 'package:note_app/main.dart';
 import 'package:note_app/screens/detail_note.dart';
 
 class SearchBar extends SearchDelegate {
   final NoteController controller = Get.find();
+  ThemeData appBarTheme(BuildContext context) {
+    return ThemeData(
+      primarySwatch: colorCustom,
+    
+      );
+  }
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -78,9 +85,9 @@ class SearchBar extends SearchDelegate {
                   Text(
                     suggestionList[index].title!,
                     style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff090952)),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
@@ -90,9 +97,7 @@ class SearchBar extends SearchDelegate {
                   ),
                   Text(
                     suggestionList[index].content!,
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
+                    style: TextStyle(fontSize: 17, color: Color(0xff090952)),
                     maxLines: 6,
                   ),
                   SizedBox(

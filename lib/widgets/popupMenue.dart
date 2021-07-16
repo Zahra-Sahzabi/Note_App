@@ -21,7 +21,13 @@ class PopupMenue extends StatelessWidget {
           .map(
             (item) => PopupMenuItem<IconMenue>(
               child: ListTile(
-                title: Text(item.text),
+                title: Text(
+                  item.text,
+                  style: TextStyle(
+                      color: Color(0xFF849ae3),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600),
+                ),
                 leading: Icon(item.icon, color: Color(0xFF849ae3)),
                 contentPadding: EdgeInsets.zero,
               ),
@@ -40,9 +46,13 @@ class PopupMenue extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                    backgroundColor: Colors.white,
                     title: Text(
                       'Delete Notes',
                       textAlign: TextAlign.center,
+                      style: TextStyle(color: Color(0xFF849ae3)),
                     ),
                     content: Text(
                       'Are you sure you want to delete All notes?',
@@ -52,20 +62,24 @@ class PopupMenue extends StatelessWidget {
                     actions: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: [ TextButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              child: Text('No',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600))),
                           TextButton(
                               onPressed: () {
                                 controller.deleteAllNote();
                                 Get.back();
                               },
-                              child:
-                                  Text('Yes', style: TextStyle(fontSize: 18))),
-                          TextButton(
-                              onPressed: () {
-                                Get.back();
-                              },
-                              child:
-                                  Text('No', style: TextStyle(fontSize: 18))),
+                              child: Text('Yes',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600))),
+                         
                         ],
                       )
                     ],

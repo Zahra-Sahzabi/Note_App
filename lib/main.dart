@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:note_app/screens/home_page.dart';
 
@@ -26,15 +27,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+      
         iconTheme: IconThemeData(color: Color(0xff090952)),
         primarySwatch: colorCustom,
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 26,
-            color: Color(0xff090952),
-            fontWeight: FontWeight.w600,
-            fontFamily: 'OpenSans'
-          ),
+              fontSize: 26,
+              color: Color(0xff090952),
+              fontWeight: FontWeight.w600,
+              fontFamily: 'OpenSans'),
           headline6: TextStyle(
               fontSize: 21,
               color: Colors.white,
@@ -52,12 +53,15 @@ class MyApp extends StatelessWidget {
               color: Color(0xff090952)),
           headline3: TextStyle(
               fontSize: 20, color: Color(0xff090952), fontFamily: 'OpenSans'),
-          bodyText2: TextStyle(
+          headline5: TextStyle(
               color: Colors.white, fontSize: 18, fontFamily: 'OpenSans'),
           subtitle1: TextStyle(
               color: Colors.white70, fontSize: 13, fontFamily: 'OpenSans'),
           headline4: TextStyle(
-              fontSize: 20, color: Colors.black, fontFamily: 'OpenSans'),
+              fontSize: 19,
+              color: Color(0xff090952),
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.w600),
         ),
       ),
       home: HomePage(),
